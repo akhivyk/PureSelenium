@@ -2,7 +2,7 @@
 .idea/
 logs/
 target/
-Pureselenium.iml
+PureSelenium.iml
 
 # Ignored files
 pom.xml

@@ -8,22 +8,23 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class IphonePage {
+public class IphonePage extends AbstractPage {
     private WebDriver driver;
 
     @FindAll({@FindBy(xpath = "//div[@class='col-md-3 col-sm-4 col-xs-6']")})
     private List<WebElement> models;
 
-    public IphonePage (WebDriver driver) {
+    public IphonePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isModelsPresent () {
+    public boolean isModelsPresent() {
         return models.isEmpty();
     }
 
-    public List<WebElement> getModels () {
+    public List<WebElement> getModels() {
+        waitForElementToBeClickable(driver, models.get(0), 10);
         return models;
     }
 }

@@ -5,34 +5,14 @@ import com.solvd.pure.selenium.pages.IphonePage;
 import com.solvd.pure.selenium.pages.MainPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.lang.invoke.MethodHandles;
-import java.util.List;
-
-public class PureSeleniumWebTest {
-    private WebDriver driver;
+public class PureSeleniumWebTest extends AbstractTest {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    @BeforeClass
-    public void setUp () {
-        System.setProperty("webdriver.chrome.driver", "/Users/akhivyk/Documents/chromedriver/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-    }
-
-    @Test
-    public void testSearchProducts () {
+    @Test(threadPoolSize = 2)
+    public void testSearchProducts() {
         MainPage mainPage = new MainPage(driver);
         driver.get("https://mobilworld.by/");
 
@@ -47,8 +27,9 @@ public class PureSeleniumWebTest {
         iphonePage.getModels().forEach(a -> LOGGER.info(a.getText()));
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
+    @Test(threadPoolSize = 2)
+    public void testPage () {
+        driver.get("https://mobilworld.by/");
+        LOGGER.info(driver.getTitle());
     }
 }

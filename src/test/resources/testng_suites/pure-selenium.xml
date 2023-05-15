@@ -1,0 +1,7 @@
+<suite name="Pure Selenium" parallel="methods" thread-count="2">
+    <test name="testing">
+        <classes>
+            <class name="com.solvd.pure.selenium.PureSeleniumWebTest"/>
+        </classes>
+    </test>
+</suite>

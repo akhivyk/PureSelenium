@@ -1,4 +1,4 @@
-<suite name="Pure Selenium" parallel="methods" thread-count="2">
+<suite name="Pure Selenium" parallel="methods" thread-count="6">
     <test name="testing">
         <classes>
             <class name="com.solvd.pure.selenium.PureSeleniumWebTest"/>

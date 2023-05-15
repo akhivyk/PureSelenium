@@ -19,12 +19,24 @@ public class IphonePage extends AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    public boolean isModelsPresent() {
-        return models.isEmpty();
+    public List<WebElement> getModels() {
+        waitForElementToBeClickable(driver, models.get(0), 20);
+        return models;
     }
 
-    public List<WebElement> getModels() {
-        waitForElementToBeClickable(driver, models.get(0), 10);
-        return models;
+    public WebElement findModel(String model) {
+        return models.stream()
+                .filter(e -> e.getText().equals(model))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public SecondIphonePage clickModel(String model) {
+        WebElement element = findModel(model);
+        if (element != null) {
+            click(element);
+            return new SecondIphonePage(driver);
+        }
+        return null;
     }
 }

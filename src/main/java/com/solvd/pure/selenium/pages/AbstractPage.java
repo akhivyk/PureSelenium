@@ -13,6 +13,8 @@ import java.util.NoSuchElementException;
 public abstract class AbstractPage {
     private static final Logger LOGGER = LogManager.getLogger();
 
+    private String absolutePageUrl;
+
     protected void click(WebElement element) {
         LOGGER.info("Clicking element: {}", element);
         element.click();
@@ -26,10 +28,15 @@ public abstract class AbstractPage {
     protected boolean isElementDisplayed(WebElement element) {
         try {
             LOGGER.info("Element is displayed: {}", element);
-            return true;
+            return element.isDisplayed();
         } catch (NoSuchElementException e) {
             LOGGER.error("Element is not displayed: {}", element);
             return false;
         }
+    }
+
+    protected void setInputField(WebElement element, String text) {
+        element.clear();
+        element.sendKeys(text);
     }
 }

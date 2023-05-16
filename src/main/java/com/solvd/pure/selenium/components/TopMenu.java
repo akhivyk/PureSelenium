@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class TopMenu {
-    private WebDriver driver;
-
+public class TopMenu extends AbstractPage {
     @FindBy(xpath = "//a[@href='/catalog/']")
     private WebElement devicesSection;
 
@@ -25,32 +23,32 @@ public class TopMenu {
     private WebElement contactsSection;
 
     public TopMenu(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public DevicesPage openDevicesPage() {
         devicesSection.click();
-        return new DevicesPage(driver);
+        return new DevicesPage(getDriver());
     }
 
     public ServicePage openServicePage() {
         serviceSection.click();
-        return new ServicePage(driver);
+        return new ServicePage(getDriver());
     }
 
     public SalesPage openSalesPage() {
         salesSection.click();
-        return new SalesPage(driver);
+        return new SalesPage(getDriver());
     }
 
     public BlogPage openBlogPage() {
         blogSection.click();
-        return new BlogPage(driver);
+        return new BlogPage(getDriver());
     }
 
     public ContactsPage openContactsPage() {
         contactsSection.click();
-        return new ContactsPage(driver);
+        return new ContactsPage(getDriver());
     }
 }

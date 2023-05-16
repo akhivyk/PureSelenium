@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class MainPage extends AbstractPage {
-    private WebDriver driver;
-
     @FindBy(css = "a.dropdown-toggle[href='/catalog/'] > div")
     private WebElement devicesSection;
 
@@ -23,7 +21,7 @@ public class MainPage extends AbstractPage {
     private TopMenu topMenu;
 
     public MainPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         topMenu = new TopMenu(driver);
         PageFactory.initElements(driver, this);
     }
@@ -34,7 +32,7 @@ public class MainPage extends AbstractPage {
 
     public DevicesPage clickDevicesSection() {
         click(devicesSection);
-        return new DevicesPage(driver);
+        return new DevicesPage(getDriver());
     }
 
     public void clickLoginButton() {
@@ -43,24 +41,16 @@ public class MainPage extends AbstractPage {
 
     public PopUpLoginWindow openLoginWindow() {
         clickLoginButton();
-        return new PopUpLoginWindow(driver);
+        return new PopUpLoginWindow(getDriver());
     }
 
     public AccountPage openAccountPage() {
         clickLoginButton();
-        return new AccountPage(driver);
+        return new AccountPage(getDriver());
     }
 
     public String getLoginButtonText() {
         return loginButton.getText();
-    }
-
-    public WebDriver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(WebDriver driver) {
-        this.driver = driver;
     }
 
     public TopMenu getTopMenu() {

@@ -9,18 +9,16 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class IphonePage extends AbstractPage {
-    private WebDriver driver;
-
     @FindAll({@FindBy(xpath = "//div[@class='col-md-3 col-sm-4 col-xs-6']")})
     private List<WebElement> models;
 
     public IphonePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public List<WebElement> getModels() {
-        waitForElementToBeClickable(driver, models.get(0), 20);
+        waitForElementToBeClickable(getDriver(), models.get(0), 20);
         return models;
     }
 
@@ -35,7 +33,7 @@ public class IphonePage extends AbstractPage {
         WebElement element = findModel(model);
         if (element != null) {
             click(element);
-            return new SecondIphonePage(driver);
+            return new SecondIphonePage(getDriver());
         }
         return null;
     }

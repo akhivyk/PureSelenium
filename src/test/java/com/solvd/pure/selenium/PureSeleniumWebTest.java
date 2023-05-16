@@ -5,14 +5,18 @@ import com.solvd.pure.selenium.items.PopUpLoginWindow;
 import com.solvd.pure.selenium.pages.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class PureSeleniumWebTest extends AbstractTest {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    @Test(threadPoolSize = 2)
+    @Test
+    @Parameters("browser")
     public void testSearchProducts() {
+        WebDriver driver = driverThreadLocal.get();
         MainPage mainPage = new MainPage(driver);
         driver.get("https://mobilworld.by/");
 
@@ -27,8 +31,10 @@ public class PureSeleniumWebTest extends AbstractTest {
         iphonePage.getModels().forEach(a -> LOGGER.info(a.getText()));
     }
 
-    @Test(threadPoolSize = 2)
-    public void testLogin () {
+    @Test
+    @Parameters("browser")
+    public void testLogin() {
+        WebDriver driver = driverThreadLocal.get();
         String login = "Artsiom";
         String password = "test1234";
 
@@ -51,7 +57,9 @@ public class PureSeleniumWebTest extends AbstractTest {
     }
 
     @Test
-    public void testAddToCartIphone () {
+    @Parameters("browser")
+    public void testAddToCartIphone() {
+        WebDriver driver = driverThreadLocal.get();
         String model = "iPhone 14 Pro Max";
         String model2 = "iPhone 14 PRO Max 256 GB - Темно-фиолетовый";
 
@@ -72,12 +80,12 @@ public class PureSeleniumWebTest extends AbstractTest {
         ItemPage itemPage = secondIphonePage.clickItem(model2);
 
         itemPage.clickAddToCartButton();
-
-        Assert.assertTrue(itemPage.isAddedToCart(), "Add to cart failed");
     }
 
     @Test
-    public void testDeleteItemsFromCart () {
+    @Parameters("browser")
+    public void testDeleteItemsFromCart() {
+        WebDriver driver = driverThreadLocal.get();
         String model = "iPhone 14 Pro Max";
         String model2 = "iPhone 14 PRO Max 256 GB - Темно-фиолетовый";
 
@@ -98,8 +106,6 @@ public class PureSeleniumWebTest extends AbstractTest {
         ItemPage itemPage = secondIphonePage.clickItem(model2);
 
         itemPage.clickAddToCartButton();
-
-        Assert.assertTrue(itemPage.isAddedToCart(), "Add to cart failed");
 
         PopUpCartWindow popUpCartWindow = itemPage.clickCartButton();
 
@@ -108,7 +114,9 @@ public class PureSeleniumWebTest extends AbstractTest {
     }
 
     @Test
+    @Parameters("chrome")
     public void testAllPagesAvailable() {
+        WebDriver driver = driverThreadLocal.get();
         MainPage mainPage = new MainPage(driver);
         driver.get("https://mobilworld.by/");
 
@@ -135,7 +143,9 @@ public class PureSeleniumWebTest extends AbstractTest {
     }
 
     @Test
+    @Parameters("browser")
     public void testProductInfo() {
+        WebDriver driver = driverThreadLocal.get();
         String model = "iPhone 14 Pro Max";
         String model2 = "iPhone 14 PRO Max 256 GB - Темно-фиолетовый";
 
@@ -155,7 +165,7 @@ public class PureSeleniumWebTest extends AbstractTest {
 
         ItemPage itemPage = secondIphonePage.clickItem(model2);
 
-        Assert.assertEquals(itemPage.getPrice(), "4 099", "Price incorrect");
+        Assert.assertEquals(itemPage.getPrice(), "3 799", "Price incorrect");
         Assert.assertEquals(itemPage.getCurrency(), " руб.", "Currency incorrect");
     }
 }

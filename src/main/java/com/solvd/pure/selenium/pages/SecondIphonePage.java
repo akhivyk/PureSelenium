@@ -9,13 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class SecondIphonePage extends AbstractPage {
-    protected WebDriver driver;
-
     @FindBy(xpath = "//a[contains(@href, '/catalog/iphone/iphone_14_pro_max')]")
     private List<WebElement> iphoneModels;
 
     public SecondIphonePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -37,9 +35,9 @@ public class SecondIphonePage extends AbstractPage {
     public ItemPage clickItem(String model) {
         WebElement element = findModel(model);
         if (element != null) {
-            JavascriptExecutor executor = (JavascriptExecutor) driver;
+            JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].click();", element);
-            return new ItemPage(driver);
+            return new ItemPage(getDriver());
         }
         return null;
     }

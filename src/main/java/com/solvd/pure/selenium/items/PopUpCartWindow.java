@@ -10,8 +10,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PopUpCartWindow extends AbstractPage {
-    protected WebDriver driver;
-
     @FindBy(xpath = "//td[@class='remove-cell']//a[@class='remove']")
     private WebElement removeAllItemsButton;
 
@@ -19,15 +17,15 @@ public class PopUpCartWindow extends AbstractPage {
     private WebElement cartTitle;
 
     public PopUpCartWindow(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public void removeAllItemsFromCart() {
-        Actions actions = new Actions(driver);
+        Actions actions = new Actions(getDriver());
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].click();", removeAllItemsButton);
     }
 

@@ -8,8 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PopUpLoginWindow extends AbstractPage {
-    protected WebDriver driver;
-
     @FindBy(xpath = "//input[@id='USER_LOGIN_POPUP']")
     private WebElement loginInput;
 
@@ -20,7 +18,7 @@ public class PopUpLoginWindow extends AbstractPage {
     private WebElement loginButton;
 
     public PopUpLoginWindow(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -46,6 +44,6 @@ public class PopUpLoginWindow extends AbstractPage {
 
     public MainPage login() {
         click(loginButton);
-        return new MainPage(driver);
+        return new MainPage(getDriver());
     }
 }

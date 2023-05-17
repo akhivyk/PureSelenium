@@ -1,0 +1,11 @@
+[2023-05-17 10:46:02] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-05-17 10:46:02] [1] [INFO] TEST [carina-demo - testLogin] STARTED at [13:46:02 2023-05-17]
+[2023-05-17 10:46:02] [1] [INFO] Starting driver session...
+[2023-05-17 10:46:06] [1] [INFO] Driver session started.
+[2023-05-17 10:46:06] [1] [INFO] INFO: opening url 'https://mobilworld.by/'
+[2023-05-17 10:46:47] [1] [INFO] PASS: element 'loginButton' is clicked.
+[2023-05-17 10:46:51] [1] [INFO] PASS: keys 'Artsiom' are sent to element 'loginInput'.
+[2023-05-17 10:46:54] [1] [INFO] PASS: keys 'test1234' are sent to element 'passwordInput'.
+[2023-05-17 10:46:57] [1] [INFO] PASS: element 'loginButton' is clicked.
+[2023-05-17 10:47:23] [1] [INFO] PASS: element 'loginButton' is clicked.
+[2023-05-17 10:47:25] [1] [INFO] TEST [carina-demo - testLogin] PASSED at [13:47:25 2023-05-17]

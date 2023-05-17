@@ -1,0 +1,11 @@
+[2023-05-17 09:50:23] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-05-17 09:50:23] [1] [INFO] TEST [carina-demo - addToCartIphone] STARTED at [12:50:23 2023-05-17]
+[2023-05-17 09:50:23] [1] [INFO] Starting driver session...
+[2023-05-17 09:50:28] [1] [INFO] Driver session started.
+[2023-05-17 09:50:28] [1] [INFO] INFO: opening url 'https://mobilworld.by/'
+[2023-05-17 09:51:21] [1] [INFO] PASS: element 'devicesSection' is clicked.
+[2023-05-17 09:51:38] [1] [INFO] PASS: element 'iphoneSection' is clicked.
+[2023-05-17 09:51:41] [1] [INFO] Do click by JavascriptExecutor for element: models1 (By.xpath: (//div[@class='col-md-3 col-sm-4 col-xs-6']//div//div//a)[2])
+[2023-05-17 09:51:52] [1] [INFO] Do click by JavascriptExecutor for element: iphoneModels32 (By.xpath: (//a[contains(@href, '/catalog/iphone/iphone_14_pro_max')])[33])
+[2023-05-17 09:52:06] [1] [INFO] Do click by JavascriptExecutor for element: addToCartButton (By.xpath: //span[contains(text(), 'В корзину')])
+[2023-05-17 09:52:08] [1] [INFO] TEST [carina-demo - addToCartIphone] PASSED at [12:52:08 2023-05-17]

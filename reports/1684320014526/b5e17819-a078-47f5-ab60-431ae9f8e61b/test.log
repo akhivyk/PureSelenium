@@ -1,0 +1,42 @@
+[2023-05-17 10:48:58] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-05-17 10:48:58] [1] [INFO] TEST [carina-demo - testSearchProducts] STARTED at [13:48:58 2023-05-17]
+[2023-05-17 10:48:58] [1] [INFO] Starting driver session...
+[2023-05-17 10:49:02] [1] [INFO] Driver session started.
+[2023-05-17 10:49:02] [1] [INFO] INFO: opening url 'https://mobilworld.by/'
+[2023-05-17 10:49:56] [1] [INFO] PASS: element 'devicesSection' is clicked.
+[2023-05-17 10:50:06] [1] [INFO] PASS: element 'iphoneSection' is clicked.
+[2023-05-17 10:50:10] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 14 Pro Max
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 14 Pro
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 14 Plus
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 14
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone SE 2022
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 13 Pro Max
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 13 Pro
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 13
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 13 Mini
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] IPhone 12 Pro Max
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] IPhone 12 Pro
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] IPhone 12
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] IPhone 12 Mini
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone SE 2020
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone 11
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone XR
+[2023-05-17 10:50:11] [1] [INFO] 
+[2023-05-17 10:50:11] [1] [INFO] iPhone SE
+[2023-05-17 10:50:11] [1] [INFO] TEST [carina-demo - testSearchProducts] PASSED at [13:50:11 2023-05-17]

@@ -1,0 +1,11 @@
+[2023-05-17 10:23:38] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-05-17 10:23:38] [1] [INFO] TEST [carina-demo - testAllPagesAvailable] STARTED at [13:23:38 2023-05-17]
+[2023-05-17 10:23:38] [1] [INFO] Starting driver session...
+[2023-05-17 10:23:43] [1] [INFO] Driver session started.
+[2023-05-17 10:23:43] [1] [INFO] INFO: opening url 'https://mobilworld.by/'
+[2023-05-17 10:24:32] [1] [INFO] PASS: element 'devicesSection' is clicked.
+[2023-05-17 10:24:43] [1] [INFO] PASS: element 'serviceSection' is clicked.
+[2023-05-17 10:24:48] [1] [INFO] PASS: element 'salesSection' is clicked.
+[2023-05-17 10:24:55] [1] [INFO] PASS: element 'blogSection' is clicked.
+[2023-05-17 10:25:12] [1] [INFO] PASS: element 'contactsSection' is clicked.
+[2023-05-17 10:25:21] [1] [INFO] TEST [carina-demo - testAllPagesAvailable] PASSED at [13:25:21 2023-05-17]

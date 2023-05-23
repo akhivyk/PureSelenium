@@ -1,4 +1,4 @@
-package com.solvd.carina.demo.gui.mobilworld.page;
+package com.solvd.carina.demo.gui.mobilworld.desktop;
 
 import com.solvd.carina.demo.gui.mobilworld.components.TopMenu;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;

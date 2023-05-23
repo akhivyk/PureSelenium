@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.NoSuchElementException;
 
 
@@ -28,7 +29,7 @@ public abstract class AbstractPage {
     protected void click(WebElement element) {
         try {
             LOGGER.info("Clicking element: {}", element);
-            WebDriverWait wait = new WebDriverWait(driver, 10); // Установите подходящее значение таймаута
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Установите подходящее значение таймаута
             wait.until(ExpectedConditions.elementToBeClickable(element)).click();
             JavascriptExecutor executor = (JavascriptExecutor) getDriver();
             executor.executeScript("arguments[0].click();", element);
@@ -40,14 +41,14 @@ public abstract class AbstractPage {
     }
 
     protected void waitForElementToBeClickable(WebDriver driver, WebElement element, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, timeoutInSeconds);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     protected boolean isElementDisplayed(WebElement element) {
         try {
             LOGGER.info("Waiting for element to be displayed: {}", element);
-            WebDriverWait wait = new WebDriverWait(driver, 60);
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
             wait.until(ExpectedConditions.visibilityOf(element));
             LOGGER.info("Element is displayed: {}", element);
             return true;

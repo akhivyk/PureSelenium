@@ -2,10 +2,12 @@ package com.solvd.carina.demo;
 
 import com.solvd.carina.demo.gui.mobilworld.android.*;
 import com.solvd.carina.demo.gui.mobilworld.android.components.Menu;
+import com.solvd.carina.demo.utils.MobileContextUtils;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -157,5 +159,26 @@ public class MobileMWTest implements IAbstractTest {
         Assert.assertFalse(iphonePage.getModels().isEmpty(), "Models is not present");
 
         iphonePage.getModels().forEach(a -> LOGGER.info(a.getText()));
+    }
+
+    @Test
+    public void testSwitchingTabs() {
+        MainPage mainPage = new MainPage(getDriver());
+        mainPage.open();
+
+        MobileContextUtils mobileContextUtils = new MobileContextUtils();
+
+        mobileContextUtils.switchMobileContext(MobileContextUtils.View.NATIVE);
+
+        SwitchTabs switchTabs = new SwitchTabs(getDriver());
+        switchTabs.clickTabsBtn();
+
+        ChromeMainPage chromeMainPage = switchTabs.clickNewTabBtn();
+
+        Assert.assertTrue(chromeMainPage.isSearchLinePresent(), "Search line not found");
+        chromeMainPage.inputSearch(R.TESTDATA.get("mw_url"));
+
+        mobileContextUtils.switchMobileContext(MobileContextUtils.View.CHROMIUM);
+        Assert.assertEquals(getDriver().getCurrentUrl(), R.TESTDATA.get("mw_url"), "Mobil world site is not opened");
     }
 }

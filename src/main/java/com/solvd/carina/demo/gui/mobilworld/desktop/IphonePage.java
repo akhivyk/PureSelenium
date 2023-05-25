@@ -1,4 +1,4 @@
-package com.solvd.carina.demo.gui.mobilworld.page;
+package com.solvd.carina.demo.gui.mobilworld.desktop;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;

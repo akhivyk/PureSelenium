@@ -1,15 +1,22 @@
-package com.solvd.carina.demo.gui.mobilworld.components;
+package com.solvd.carina.demo.gui.mobilworld.android.components;
 
-import com.solvd.carina.demo.gui.mobilworld.desktop.*;
+import com.solvd.carina.demo.gui.mobilworld.android.*;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TopMenu extends AbstractUIObject {
+public class Menu extends AbstractUIObject {
+
+    @FindBy(xpath = "//div[@class='burger pull-left']")
+    private ExtendedWebElement openMenuBtn;
+
     @FindBy(xpath = "//a[@href='/catalog/']")
     private ExtendedWebElement devicesSection;
+
+    @FindBy(xpath = "//li[@class='menu_title']")
+    private ExtendedWebElement secondDevicesSection;
 
     @FindBy(xpath = "//a[@href='/services/']")
     private ExtendedWebElement serviceSection;
@@ -23,32 +30,41 @@ public class TopMenu extends AbstractUIObject {
     @FindBy(xpath = "//a[@href='/contacts/']")
     private ExtendedWebElement contactsSection;
 
-    public TopMenu(WebDriver driver, SearchContext searchContext) {
+
+    public Menu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
+    public void openMenu() {
+        openMenuBtn.click();
+    }
+
+    public void clickDevicesPage() {
+        devicesSection.clickByJs();
+    }
+
     public DevicesPage openDevicesPage() {
-        devicesSection.click();
+        secondDevicesSection.clickByJs();
         return new DevicesPage(driver);
     }
 
-    public ServicePage openServicePage() {
-        serviceSection.click();
-        return new ServicePage(driver);
+    public ServicesPage openServicesPage() {
+        serviceSection.clickByJs();
+        return new ServicesPage(driver);
     }
 
     public SalesPage openSalesPage() {
-        salesSection.click();
+        salesSection.clickByJs();
         return new SalesPage(driver);
     }
 
     public BlogPage openBlogPage() {
-        blogSection.click();
+        blogSection.clickByJs();
         return new BlogPage(driver);
     }
 
     public ContactsPage openContactsPage() {
-        contactsSection.click();
+        contactsSection.clickByJs();
         return new ContactsPage(driver);
     }
 }

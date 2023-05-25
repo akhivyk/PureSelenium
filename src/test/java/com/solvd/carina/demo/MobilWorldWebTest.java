@@ -2,7 +2,7 @@ package com.solvd.carina.demo;
 
 import com.solvd.carina.demo.gui.mobilworld.components.PopUpLoginWindow;
 import com.solvd.carina.demo.gui.mobilworld.components.TopMenu;
-import com.solvd.carina.demo.gui.mobilworld.page.*;
+import com.solvd.carina.demo.gui.mobilworld.desktop.*;
 import com.zebrunner.carina.core.AbstractTest;
 import com.zebrunner.carina.utils.R;
 import org.apache.logging.log4j.LogManager;

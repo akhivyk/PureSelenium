@@ -1,6 +1,6 @@
 package com.solvd.carina.demo.gui.mobilworld.components;
 
-import com.solvd.carina.demo.gui.mobilworld.page.MainPage;
+import com.solvd.carina.demo.gui.mobilworld.desktop.MainPage;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;

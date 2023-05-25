@@ -1,11 +1,13 @@
-package com.solvd.carina.demo.gui.mobilworld.page;
+package com.solvd.carina.demo.gui.mobilworld.android;
 
+import com.solvd.carina.demo.gui.mobilworld.common.ItemPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class ItemPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ItemPageBase.class)
+public class ItemPage extends ItemPageBase {
 
     @FindBy(xpath = "//span[contains(text(), 'В корзину')]")
     private ExtendedWebElement addToCartButton;
@@ -29,17 +31,13 @@ public class ItemPage extends AbstractPage {
         super(driver);
     }
 
-    public void clickAddToCartButton() {
+    @Override
+    public void addToCartButton() {
         addToCartButton.clickByJs();
     }
 
     public boolean isAddedToCart() {
         return addToCartButton.getAttribute("style").contains("display: none;");
-    }
-
-    public CartPage clickCartButton() {
-        cartButton.click();
-        return new CartPage(driver);
     }
 
     public String getPrice() {

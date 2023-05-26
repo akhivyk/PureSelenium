@@ -13,6 +13,8 @@ public class MainPage extends MainPageBase {
     @FindBy(xpath = "//div[@class='burger pull-left']")
     private Menu menu;
 
+    private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_DESKTOP = "This method is not yet implemented for Android";
+
     public MainPage(WebDriver driver) {
         super(driver);
         setPageAbsoluteURL("https://mobilworld.by/");
@@ -24,11 +26,11 @@ public class MainPage extends MainPageBase {
 
     @Override
     public DevicesPage openDevicePage() {
-        return null;
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_DESKTOP);
     }
 
     @Override
     public AccountPage openAccountPage() {
-        return null;
+        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_DESKTOP);
     }
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = SecondIphonePageBase.class)
 public class SecondIphonePage extends SecondIphonePageBase {
@@ -31,17 +32,13 @@ public class SecondIphonePage extends SecondIphonePageBase {
         return iphoneModels.stream()
                 .filter(e -> e.getText().equals(model))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new NoSuchElementException("Model " + model + " not found"));
     }
 
     public ItemPage openItemPage(String model) {
         ExtendedWebElement element = findModel(model);
-        if (element != null) {
-            element.clickByJs();
-            System.out.println("ENTERED");
-            return new ItemPage(driver);
-        }
-        return null;
+        element.clickByJs();
+        return new ItemPage(driver);
     }
 
     public List<ExtendedWebElement> getIphoneModels() {

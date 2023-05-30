@@ -1,8 +1,8 @@
-package com.solvd.carina.demo.gui.mobilworld.android.components;
+package com.solvd.carina.demo.gui.mobilworld.ios.components;
 
-import com.solvd.carina.demo.gui.mobilworld.android.*;
 import com.solvd.carina.demo.gui.mobilworld.common.*;
 import com.solvd.carina.demo.gui.mobilworld.common.components.MenuBase;
+import com.solvd.carina.demo.gui.mobilworld.ios.*;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -32,48 +32,56 @@ public class Menu extends MenuBase {
     @FindBy(xpath = "//a[@href='/contacts/']")
     private ExtendedWebElement contactsSection;
 
-    private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_IOS = "This method is only for IOS";
+    @FindBy(xpath = "//a[@href='/personal/']")
+    private ExtendedWebElement loginSection;
 
     public Menu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
+    @Override
     public void openMenu() {
         waitUntil(ExpectedConditions.elementToBeClickable(openMenuBtn.getBy()), 10);
         openMenuBtn.click();
     }
 
+    @Override
     public void clickDevicesPage() {
-        devicesSection.clickByJs();
-    }
-
-    public DevicesPageBase openDevicesPage() {
-        secondDevicesSection.clickByJs();
-        return new DevicesPage(driver);
-    }
-
-    public ServicesPageBase openServicesPage() {
-        serviceSection.clickByJs();
-        return new ServicesPage(driver);
-    }
-
-    public SalesPageBase openSalesPage() {
-        salesSection.clickByJs();
-        return new SalesPage(driver);
-    }
-
-    public BlogPageBase openBlogPage() {
-        blogSection.clickByJs();
-        return new BlogPage(driver);
-    }
-
-    public ContactsPageBase openContactsPage() {
-        contactsSection.clickByJs();
-        return new ContactsPage(driver);
+        devicesSection.click();
     }
 
     @Override
+    public DevicesPageBase openDevicesPage() {
+        secondDevicesSection.click();
+        return new DevicesPage(driver);
+    }
+
+    @Override
+    public ServicesPageBase openServicesPage() {
+        serviceSection.click();
+        return new ServicesPage(driver);
+    }
+
+    @Override
+    public SalesPageBase openSalesPage() {
+        salesSection.click();
+        return new SalesPage(driver);
+    }
+
+    @Override
+    public BlogPageBase openBlogPage() {
+        blogSection.click();
+        return new BlogPage(driver);
+    }
+
+    @Override
+    public ContactsPageBase openContactsPage() {
+        contactsSection.click();
+        return new ContactsPage(driver);
+    }
+
     public LoginPageBase openLoginPage() {
-        throw new UnsupportedOperationException(THIS_METHOD_IS_DEFINED_ONLY_IN_IOS);
+        loginSection.click();
+        return new LoginPage(driver);
     }
 }

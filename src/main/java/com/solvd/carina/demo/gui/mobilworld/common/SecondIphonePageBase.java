@@ -13,4 +13,6 @@ public abstract class SecondIphonePageBase extends AbstractPage {
     public abstract boolean isIphoneModelsPresent();
 
     public abstract ExtendedWebElement findModel(String model);
+
+    public abstract ItemPageBase openItemPage(String model);
 }

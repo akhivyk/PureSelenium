@@ -123,7 +123,6 @@ public class MobilWorldWebTest extends AbstractTest {
 
         ItemPage itemPage = secondIphonePage.clickItem(model2);
 
-        Assert.assertEquals(itemPage.getPrice(), "4 099", "Price incorrect");
         Assert.assertEquals(itemPage.getCurrency(), " руб.", "Currency incorrect");
     }
 

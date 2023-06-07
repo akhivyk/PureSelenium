@@ -2,12 +2,12 @@ package com.solvd.carina.demo;
 
 import com.solvd.carina.demo.gui.mobilworld.android.*;
 import com.solvd.carina.demo.gui.mobilworld.android.components.Menu;
+import com.solvd.carina.demo.gui.mobilworld.common.*;
 import com.solvd.carina.demo.utils.MobileContextUtils;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.utils.R;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -45,15 +45,15 @@ public class MobileMWTest implements IAbstractTest {
         menu.openMenu();
 
         menu.clickDevicesPage();
-        DevicesPage devicesPage = menu.openDevicesPage();
+        DevicesPageBase devicesPage = menu.openDevicesPage();
 
-        IphonePage iphonePage = devicesPage.openIphoneSection();
+        IphonePageBase iphonePage = devicesPage.openIphoneSection();
         Assert.assertFalse(iphonePage.getModels().isEmpty(), "Models is not present");
 
-        SecondIphonePage secondIphonePage = iphonePage.openIphonePage(model);
+        SecondIphonePageBase secondIphonePage = iphonePage.openIphonePage(model);
         Assert.assertFalse(secondIphonePage.isIphoneModelsPresent(), "Models is not present");
 
-        ItemPage itemPage = secondIphonePage.openItemPage(model2);
+        ItemPageBase itemPage = secondIphonePage.openItemPage(model2);
         itemPage.addToCartButton();
     }
 
@@ -69,15 +69,15 @@ public class MobileMWTest implements IAbstractTest {
         menu.openMenu();
 
         menu.clickDevicesPage();
-        DevicesPage devicesPage = menu.openDevicesPage();
+        DevicesPageBase devicesPage = menu.openDevicesPage();
 
-        IphonePage iphonePage = devicesPage.openIphoneSection();
+        IphonePageBase iphonePage = devicesPage.openIphoneSection();
         Assert.assertFalse(iphonePage.getModels().isEmpty(), "Models is not present");
 
-        SecondIphonePage secondIphonePage = iphonePage.openIphonePage(model);
+        SecondIphonePageBase secondIphonePage = iphonePage.openIphonePage(model);
         Assert.assertFalse(secondIphonePage.isIphoneModelsPresent(), "Models is not present");
 
-        ItemPage itemPage = secondIphonePage.openItemPage(model2);
+        ItemPageBase itemPage = secondIphonePage.openItemPage(model2);
         itemPage.addToCartButton();
 
         itemPage.clickRemoveAllItemsButton();
@@ -98,23 +98,23 @@ public class MobileMWTest implements IAbstractTest {
         Menu menu = mainPage.getMenu();
         menu.openMenu();
 
-        DevicesPage devicesPage = menu.openDevicesPage();
+        DevicesPageBase devicesPage = menu.openDevicesPage();
         Assert.assertEquals(getDriver().getCurrentUrl(), devicesPageUrl, "Device page not opened");
 
         menu.openMenu();
-        ServicesPage servicesPage = menu.openServicesPage();
+        ServicesPageBase servicesPage = menu.openServicesPage();
         Assert.assertEquals(getDriver().getCurrentUrl(), servicePageUrl, "Service page not opened");
 
         menu.openMenu();
-        SalesPage salesPage = menu.openSalesPage();
+        SalesPageBase salesPage = menu.openSalesPage();
         Assert.assertEquals(getDriver().getCurrentUrl(), salesPageUrl, "Sales page not opened");
 
         menu.openMenu();
-        BlogPage blogPage = menu.openBlogPage();
+        BlogPageBase blogPage = menu.openBlogPage();
         Assert.assertEquals(getDriver().getCurrentUrl(), blogPageUrl, "Blog page not opened");
 
         menu.openMenu();
-        ContactsPage contactsPage = menu.openContactsPage();
+        ContactsPageBase contactsPage = menu.openContactsPage();
         Assert.assertEquals(getDriver().getCurrentUrl(), contactsPageUrl, "Contacts page not opened");
     }
 
@@ -130,15 +130,15 @@ public class MobileMWTest implements IAbstractTest {
         menu.openMenu();
 
         menu.clickDevicesPage();
-        DevicesPage devicesPage = menu.openDevicesPage();
+        DevicesPageBase devicesPage = menu.openDevicesPage();
 
-        IphonePage iphonePage = devicesPage.openIphoneSection();
+        IphonePageBase iphonePage = devicesPage.openIphoneSection();
         Assert.assertFalse(iphonePage.getModels().isEmpty(), "Models is not present");
 
-        SecondIphonePage secondIphonePage = iphonePage.openIphonePage(model);
+        SecondIphonePageBase secondIphonePage = iphonePage.openIphonePage(model);
         Assert.assertFalse(secondIphonePage.isIphoneModelsPresent(), "Models is not present");
 
-        ItemPage itemPage = secondIphonePage.openItemPage(model2);
+        ItemPageBase itemPage = secondIphonePage.openItemPage(model2);
 
         Assert.assertEquals(itemPage.getPrice(), "4 099", "Price incorrect");
         Assert.assertEquals(itemPage.getCurrency(), " руб.", "Currency incorrect");
@@ -153,9 +153,9 @@ public class MobileMWTest implements IAbstractTest {
         menu.openMenu();
 
         menu.clickDevicesPage();
-        DevicesPage devicesPage = menu.openDevicesPage();
+        DevicesPageBase devicesPage = menu.openDevicesPage();
 
-        IphonePage iphonePage = devicesPage.openIphoneSection();
+        IphonePageBase iphonePage = devicesPage.openIphoneSection();
         Assert.assertFalse(iphonePage.getModels().isEmpty(), "Models is not present");
 
         iphonePage.getModels().forEach(a -> LOGGER.info(a.getText()));

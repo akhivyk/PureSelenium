@@ -17,4 +17,6 @@ public abstract class IphonePageBase extends AbstractPage {
     public abstract ExtendedWebElement findModel(String model);
 
     public abstract boolean isModelsPresent();
+
+    public abstract SecondIphonePageBase openIphonePage(String model);
 }

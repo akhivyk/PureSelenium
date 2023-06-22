@@ -1,19 +1,27 @@
 package com.solvd.carina.demo;
 
+import com.browserup.bup.BrowserUpProxy;
+import com.browserup.bup.proxy.CaptureType;
+import com.browserup.harreader.model.Har;
+import com.browserup.harreader.model.HarEntry;
+import com.browserup.harreader.model.HarRequest;
+import com.browserup.harreader.model.HarResponse;
 import com.solvd.carina.demo.gui.mobilworld.components.PopUpLoginWindow;
 import com.solvd.carina.demo.gui.mobilworld.components.TopMenu;
 import com.solvd.carina.demo.gui.mobilworld.desktop.*;
 import com.zebrunner.agent.core.annotation.TestRailCaseId;
 import com.zebrunner.carina.core.AbstractTest;
+import com.zebrunner.carina.proxy.ProxyPool;
+import com.zebrunner.carina.proxy.browserup.CarinaBrowserUpProxy;
 import com.zebrunner.carina.utils.R;
-import jdk.jfr.Name;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.CapabilityType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.Set;
 
 public class MobilWorldWebTest extends AbstractTest {
@@ -172,5 +180,50 @@ public class MobilWorldWebTest extends AbstractTest {
             }
         }
         Assert.assertTrue(cookieFound, "Cookie " + cookieName + " with value " + cookieValue + " not found");
+    }
+
+
+    @Test
+    public void testValidateFoundCallUsingProxy() {
+        R.CONFIG.put("browserup_proxy", "true", true);
+        R.CONFIG.put("proxy_type", "DYNAMIC", true);
+        R.CONFIG.put("proxy_port", "0", true);
+
+        getDriver();
+
+        BrowserUpProxy browserUpProxy = ProxyPool.getOriginal(CarinaBrowserUpProxy.class)
+                .orElseThrow()
+                .getProxy();
+        browserUpProxy.enableHarCaptureTypes(CaptureType.REQUEST_CONTENT, CaptureType.RESPONSE_CONTENT);
+        browserUpProxy.newHar();
+
+        Capabilities capabilities = ((HasCapabilities) getDriver()).getCapabilities();
+        Assert.assertNotNull(capabilities.getCapability(CapabilityType.PROXY), "Proxy capability should exists.");
+
+        getDriver().get("https://www.solvd.com/");
+
+        BrowserUpProxy proxy = ProxyPool.getOriginal(CarinaBrowserUpProxy.class)
+                .orElseThrow()
+                .getProxy();
+
+        Har har = proxy.getHar();
+        List<HarEntry> entries = har.getLog().getEntries();
+
+        boolean isEventSent = false;
+
+        for (HarEntry entry : entries) {
+            HarRequest request = entry.getRequest();
+            if (request.getUrl().contains("https://rest.happierleads.com")) {
+                isEventSent = true;
+
+                HarResponse response = entry.getResponse();
+                String responseBody = response.getContent().getText();
+
+                Assert.assertTrue(responseBody.contains("data"));
+                break;
+            }
+        }
+
+        Assert.assertTrue(isEventSent);
     }
 }
